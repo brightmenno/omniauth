@@ -38,7 +38,7 @@ module OmniAuth
           end
         }
         
-        hash[:name] = "#{hash['first_name']} #{hash['last_name']}"
+        hash['name'] = "#{hash['first_name']} #{hash['last_name']}"
         hash
       end
     end
