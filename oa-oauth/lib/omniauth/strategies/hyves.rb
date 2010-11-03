@@ -23,7 +23,7 @@ module OmniAuth
           "user_info" => {
             "name" => hash["firstname"] + " " + hash["lastname"],
             "first_name" => hash["firstname"],
-            "last_name" => hash["lastname"]
+            "last_name" => hash["lastname"],
             "profile_image_url" => hash['profilepicture']['icon_medium']['src']
           },
           "credentials" => {
