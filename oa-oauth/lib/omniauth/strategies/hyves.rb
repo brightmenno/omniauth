@@ -23,8 +23,7 @@ module OmniAuth
           "user_info" => {
             "name" => hash["firstname"] + " " + hash["lastname"],
             "first_name" => hash["firstname"],
-            "last_name" => hash["lastname"],
-            "profile_image_url" => hash['profilepicture']['icon_medium']['src']
+            "last_name" => hash["lastname"]
           },
           "credentials" => {
             "token" => @access_token.token,
@@ -51,7 +50,7 @@ module OmniAuth
       end
       
       def request_token_options
-        serialize( { :methods => "users.get", :ha_method => "auth.requesttoken", :strict_oauth_spec_response => true } )          
+        serialize( { :methods => "users.get,friends.get,wwws.create", :ha_method => "auth.requesttoken", :strict_oauth_spec_response => true } )          
       end
       
       def access_token_options
