@@ -13,5 +13,9 @@ module OmniAuth
     autoload :Foursquare,         'omniauth/strategies/foursquare'
     autoload :Gowalla,            'omniauth/strategies/gowalla'
     autoload :Identica,           'omniauth/strategies/identica'
+    autoload :TripIt,             'omniauth/strategies/trip_it'
+    autoload :Dopplr,             'omniauth/strategies/dopplr'
+    autoload :Meetup,             'omniauth/strategies/meetup'
+    autoload :SoundCloud,         'omniauth/strategies/sound_cloud'
   end
 end
