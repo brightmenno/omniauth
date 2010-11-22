@@ -33,31 +33,31 @@ module OmniAuth
       end
       
       def user_hash(access_token)
-        res = MultiJson.decode( access_token.get("http://data.hyves-api.nl/?userid=#{access_token.params[:userid]}&ha_method=users.get&#{default_options}").body )
-        res["user"].first
+        rsp = MultiJson.decode( access_token.get("http://data.hyves-api.nl/?userid=#{access_token.params[:userid]}&ha_method=users.get&#{default_options}").body )
+        rsp["user"].first
       end
       
       def request_token_path
-        "https://data.hyves-api.nl/?#{request_token_options}&#{default_options}"
+        "http://data.hyves-api.nl/?#{request_token_options}&#{default_options}"
       end
       
       def access_token_path
-        "https://data.hyves-api.nl/?#{access_token_options}&#{default_options}"
+        "http://data.hyves-api.nl/?#{access_token_options}&#{default_options}"
       end
       
       def default_options
-        serialize( { :ha_version => "2.0", :ha_format => "json", :ha_fancylayout => false } )            
+        to_params( { :ha_version => "2.0", :ha_format => "json", :ha_fancylayout => false } )            
       end
       
       def request_token_options
-        serialize( { :methods => "users.get,friends.get,wwws.create", :ha_method => "auth.requesttoken", :strict_oauth_spec_response => true } )          
+        to_params( { :methods => "users.get,friends.get,wwws.create", :ha_method => "auth.requesttoken", :strict_oauth_spec_response => true } )          
       end
       
       def access_token_options
-        serialize( { :ha_method => "auth.accesstoken", :strict_oauth_spec_response => true } )
+        to_params( { :ha_method => "auth.accesstoken", :strict_oauth_spec_response => true } )
       end
       
-      def serialize(options)
+      def to_params(options)
         options.collect {|k,v| "#{k}=#{v.to_s}"}.join('&')
       end      
     end
