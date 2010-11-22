@@ -5,6 +5,7 @@ module OmniAuth
   module Strategy
     
     def self.included(base)
+      OmniAuth.strategies << base
       base.class_eval do
         attr_reader :app, :name, :env, :options, :response
       end
@@ -81,7 +82,7 @@ module OmniAuth
     end
     
     def callback_url
-      full_host + "#{OmniAuth.config.path_prefix}/#{name}/callback"
+      full_host + callback_path
     end
     
     def session
